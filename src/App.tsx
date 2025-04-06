@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { getCats } from './Api/getCats'
 import Actions from './Common/Components/Actions'
 import ImageCat from './Common/Components/ImageCat'
@@ -30,14 +30,18 @@ function App() {
   }, [isAutoRefresh])
 
   return (
-    <Wrapper>
-      <Actions
-        setIsEnabled={setIsEnabled}
-        setIsAutoRefresh={setIsAutoRefresh}
-        getCat={getCat}
-      />
-      {isEnabled && cat && <ImageCat catUrl={cat} />}
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Actions
+          setIsEnabled={setIsEnabled}
+          setIsAutoRefresh={setIsAutoRefresh}
+          getCat={getCat}
+        />
+        {isEnabled && cat && <ImageCat catUrl={cat} />}
+      </Wrapper>
+
+      <GlobalStyle />
+    </>
   )
 }
 
@@ -51,4 +55,9 @@ const Wrapper = styled.div`
   gap: 40px;
   height: 100vh;
   width: 100%;
+`
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
 `
