@@ -66,7 +66,7 @@ Error generating stack: `+l.message+`
   max-width: 100%;
   height: auto;
   display: block;
-`;function Xg(){const[u,c]=ol.useState(null),[r,f]=ol.useState(!1),[o,h]=ol.useState(!1),y=async()=>{Bg().then(A=>{c(A)})};return ol.useEffect(()=>{r&&y()},[r]),ol.useEffect(()=>{if(o){const A=setInterval(()=>{y()},5e3);return()=>clearInterval(A)}},[o]),te.jsxs(te.Fragment,{children:[te.jsxs(Qg,{children:[te.jsx(qg,{setIsEnabled:f,setIsAutoRefresh:h,getCat:y}),r&&u&&te.jsx(Yg,{catUrl:u})]}),te.jsx(Zg,{})]})}const Qg=aa.div`
+`;function Xg(){const[u,c]=ol.useState(null),[r,f]=ol.useState(!1),[o,h]=ol.useState(!1),y=async()=>{Bg().then(A=>{c(A)}).catch(()=>{c("/img/404.png")})};return ol.useEffect(()=>{r&&y()},[r]),ol.useEffect(()=>{if(o){const A=setInterval(()=>{y()},5e3);return()=>clearInterval(A)}},[o]),te.jsxs(te.Fragment,{children:[te.jsxs(Qg,{children:[te.jsx(qg,{setIsEnabled:f,setIsAutoRefresh:h,getCat:y}),r&&u&&te.jsx(Yg,{catUrl:u})]}),te.jsx(Zg,{})]})}const Qg=aa.div`
   display: flex;
   justify-content: center;
   align-items: center;
