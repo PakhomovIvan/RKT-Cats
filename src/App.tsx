@@ -6,16 +6,21 @@ import ImageCat from './Common/Components/ImageCat'
 
 function App() {
   const [cat, setCat] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const [isEnabled, setIsEnabled] = useState(false)
   const [isAutoRefresh, setIsAutoRefresh] = useState(false)
 
   const getCat = async () => {
+    setIsLoading(true)
     getCats()
       .then((res) => {
         setCat(res)
       })
       .catch(() => {
         setCat('/img/404.png')
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -41,7 +46,12 @@ function App() {
           setIsAutoRefresh={setIsAutoRefresh}
           getCat={getCat}
         />
-        {isEnabled && cat && <ImageCat catUrl={cat} />}
+
+        {!isLoading ? (
+          isEnabled && cat && <ImageCat catUrl={cat} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </Wrapper>
 
       <GlobalStyle />
