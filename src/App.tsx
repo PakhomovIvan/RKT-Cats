@@ -10,9 +10,13 @@ function App() {
   const [isAutoRefresh, setIsAutoRefresh] = useState(false)
 
   const getCat = async () => {
-    getCats().then((res) => {
-      setCat(res)
-    })
+    getCats()
+      .then((res) => {
+        setCat(res)
+      })
+      .catch(() => {
+        setCat('/img/404.png')
+      })
   }
 
   useEffect(() => {
