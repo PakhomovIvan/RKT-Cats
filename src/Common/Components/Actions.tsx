@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 import { ActionsProps } from '../Models/ActionsProps'
 
-const Actions = ({ setIsEnabled, setIsAutoRefresh, getCat }: ActionsProps) => {
+const Actions = ({
+  setIsEnabled,
+  setIsAutoRefresh,
+  getCat,
+  isEnabled,
+}: ActionsProps) => {
   const handeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target
 
@@ -34,7 +39,7 @@ const Actions = ({ setIsEnabled, setIsAutoRefresh, getCat }: ActionsProps) => {
         />
         Auto-refresh every 5 second{' '}
       </label>
-      <Button type="button" onClick={getCat}>
+      <Button type="button" onClick={getCat} disabled={!isEnabled}>
         Get Cat
       </Button>
     </Wrapper>

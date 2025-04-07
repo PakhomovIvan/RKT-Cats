@@ -17,7 +17,7 @@ function App() {
         setCat(res)
       })
       .catch(() => {
-        setCat('/img/404.png')
+        setCat('https://pakhomovivan.github.io/RKT-Cats/img/404.png')
       })
       .finally(() => {
         setIsLoading(false)
@@ -43,6 +43,7 @@ function App() {
       <Wrapper>
         <Actions
           setIsEnabled={setIsEnabled}
+          isEnabled={isEnabled}
           setIsAutoRefresh={setIsAutoRefresh}
           getCat={getCat}
         />
